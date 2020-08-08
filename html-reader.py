@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from urllib.request import Request,urlopen
 import re
 
+
 class MyHTMLParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -17,6 +18,7 @@ class MyHTMLParser(HTMLParser):
         else:
             self._cont = False
     #
+
     def handle_endtag(self, tag):
         self._current_data = ''
     #
@@ -28,7 +30,6 @@ class MyHTMLParser(HTMLParser):
             else:
                 print('\n', data, end='')
 
-
     # def handle_comment(self, data):
     #     print('<!-- -->')
 
@@ -38,10 +39,12 @@ class MyHTMLParser(HTMLParser):
     # def handle_charref(self, name):
     #     print('&#%s;' % name)
 
+
 def main():
-    parser = MyHTMLParser()
     POS = './test-html.html'
+    parser = MyHTMLParser()
     parser.feed(open(POS, 'r', encoding='utf-8').read())
+
 
 if __name__ == '__main__':
     main()
